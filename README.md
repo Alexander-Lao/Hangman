@@ -1,6 +1,6 @@
 Hangman
-IM NOT GOOD WITH GIT SO I DONT KNOW IF YOU CAN ADD STUFF HERE
-BUT IF YOU CAN, MAKE EDITS AND ADD MORE TO THE "TO DO" LIST IF YOU COME UP WITH IDEAS.
+Hopefully you guys can edit this file
+If you can, feel free to make edits to the "to do" list
 
 To do:
 Add word choice randomizer
