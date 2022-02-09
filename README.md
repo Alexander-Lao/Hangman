@@ -1,5 +1,4 @@
-Hopefully you guys can edit this file
-If you can, feel free to make edits to the "to do" list
+Hopefully you guys can edit this file. If you can, feel free to make edits to the "to do" list
 
 To do:
 Add word choice randomizer
