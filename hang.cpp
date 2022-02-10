@@ -1,18 +1,28 @@
 #include <iostream>
 #include <fstream> //file reader
+#include <bits/stdc++.h>
 using namespace std;
 
 string word;
-
 int rights = 0;
 string guess;
 string temp;
 
+//Function for random number generator
+mt19937 seed(chrono::high_resolution_clock::now().time_since_epoch().count());
+int getrand(int l,int r) {
+    uniform_int_distribution<> gen(l,r);
+    return gen(seed);
+}
+
 
 int main() {
     //Start of random word generator (from the 1000 words in dictionary.txt)
-    srand(time(0));
-    int ran = (rand() %1000 * rand() %1000) %1000 +1; //random value from 1 to 1000
+    int n=getrand(1,1000);
+    int ran;
+    for (int i=1; i<=n; i++) {
+        ran = getrand(1,1000); //random value from 1 to 1000
+    }
 
     ifstream dictionary; 
 
