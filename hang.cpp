@@ -7,6 +7,11 @@ string word;
 int rights = 0;
 string guess;
 string temp;
+bool alreadyAnswered;
+int prevRights = 0;
+int lives = 10;
+
+bool used [26];
 
 //Function for random number generator
 mt19937 seed(chrono::high_resolution_clock::now().time_since_epoch().count());
@@ -39,8 +44,6 @@ int main() {
     int length = word.length();
     //End of random word generator
 
-    // cout << word +"\n"; //Prints out the correct answer, DELETE AT END
-
     string answer[length];
     string response[length];
 
@@ -52,7 +55,9 @@ int main() {
     }
 
     //user interaction loop
-    while(rights < length){
+    while(rights < length && lives > 0){
+
+        cout << "you have " << lives << " lives \n";
 
         //prints out current response with filled in guesses
         for(int i = 0; i < length; i++){
@@ -61,18 +66,45 @@ int main() {
 
         cout << "\n Enter a letter:";
         cin >> guess;
+
+        int x = guess[0];
+        x -= 97; //Changes char into number
+        if(used[x] == true){
+            alreadyAnswered = true;
+        }
+        else{
+            used[x] = true;
+        }
+        
+        //wins when user guesses right answer
+        if(guess == word){
+            rights = length;
+        }
+
         temp = "";
         temp.push_back(guess[0]);
 
         //check if guess is right, if it is, add letter to response
         for(int i = 0; i < length; i++){
-            if(answer[i] ==  temp + " " && response[i] != answer[i]){
+            if(answer[i] ==  temp + " " && temp + " " != response[i]){
                 response[i] = answer[i];
                 rights++;
             }
         }
+
+        if (prevRights == rights && alreadyAnswered == false){
+            lives--;
+        }
+        prevRights = rights;
+        alreadyAnswered = false;
     }
-    cout << "Congrats the word was: " + word;
+
+    if(lives > 0){
+        cout << "Congrats the word was: " + word + "\nYou survivied with " << lives << " lives left";
+    }
+    else{
+        cout << "The word was " + word;
+    }
 
     return 0;
 }

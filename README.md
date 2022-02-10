@@ -7,9 +7,6 @@ Add word choice randomizer
 
 To do:
 Add game elements
-  - Lives
-    - Repeating the same letter should not decrease lives
     - Dependant on string size?
-    - Display correct answer if failed
   - Something like "welcome to hangman" at the start?
   - Add play again option
