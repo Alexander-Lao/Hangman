@@ -12,3 +12,4 @@ Add game elements
     - Dependant on string size?
     - Display correct answer if failed
   - Something like "welcome to hangman" at the start?
+  - Add play again option

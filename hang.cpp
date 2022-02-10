@@ -29,7 +29,7 @@ int main() {
     int length = word.length();
     //End of random word generator
 
-    cout << word +"\n"; //Prints out the correct answer, DELETE AT END
+    // cout << word +"\n"; //Prints out the correct answer, DELETE AT END
 
     string answer[length];
     string response[length];
@@ -56,7 +56,7 @@ int main() {
 
         //check if guess is right, if it is, add letter to response
         for(int i = 0; i < length; i++){
-            if(answer[i] ==  temp + " "){
+            if(answer[i] ==  temp + " " && response[i] != answer[i]){
                 response[i] = answer[i];
                 rights++;
             }
