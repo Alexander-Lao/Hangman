@@ -20,6 +20,11 @@ int getrand(int l,int r) {
     return gen(seed);
 }
 
+//Turns number into letter
+char intToAlphabet( int i )
+{
+   return static_cast<char>('a' - 1 + i);
+}
 
 int main() {
     //Start of random word generator (from the 1000 words in dictionary.txt)
@@ -54,49 +59,70 @@ int main() {
         response[i] = "_ ";
     }
 
+    cout << "Welcome to hangman! \n" << "Enter 1 to see used letters \n" << "Enter any other number to give up \n\n";
     //user interaction loop
     while(rights < length && lives > 0){
 
-        cout << "you have " << lives << " lives \n";
+        cout << "You have " << lives << " lives \n";
 
         //prints out current response with filled in guesses
         for(int i = 0; i < length; i++){
             cout << response[i];
         }
 
-        cout << "\n Enter a letter:";
+        cout << "\nEnter a letter:";
         cin >> guess;
 
-        int x = guess[0];
-        x -= 97; //Changes char into number
-        if(used[x] == true){
-            alreadyAnswered = true;
-        }
-        else{
-            used[x] = true;
-        }
-        
-        //wins when user guesses right answer
-        if(guess == word){
-            rights = length;
-        }
-
-        temp = "";
-        temp.push_back(guess[0]);
-
-        //check if guess is right, if it is, add letter to response
-        for(int i = 0; i < length; i++){
-            if(answer[i] ==  temp + " " && temp + " " != response[i]){
-                response[i] = answer[i];
-                rights++;
+        //Check if input is a number or letter
+        if(isdigit(guess[0])){
+            //Display used letters
+            if(guess[0] == '1'){
+                cout << "\n";
+                cout << "Already used: ";
+                for(int i = 0; i < 26; i++){
+                    if(used[i] == true){
+                        cout << intToAlphabet(i+1) << " ";
+                    }
+                }
+                cout << "\n\n";
+            }
+            //Quit game if any number other than 1 is used
+            else{
+                lives = -1;
             }
         }
+        else{
+            int x = guess[0];
+            x -= 97; //Changes char into number
+            if(used[x] == true){
+                alreadyAnswered = true;
+            }
+            else{
+                used[x] = true;
+            }
+            
+            //wins when user guesses right answer
+            if(guess == word){
+                rights = length;
+            }
 
-        if (prevRights == rights && alreadyAnswered == false){
-            lives--;
+            temp = "";
+            temp.push_back(guess[0]);
+
+            //check if guess is right, if it is, add letter to response
+            for(int i = 0; i < length; i++){
+                if(answer[i] ==  temp + " " && temp + " " != response[i]){
+                    response[i] = answer[i];
+                    rights++;
+                }
+            }
+
+            if (prevRights == rights && alreadyAnswered == false){
+                lives--;
+            }
+            prevRights = rights;
+            alreadyAnswered = false;
         }
-        prevRights = rights;
-        alreadyAnswered = false;
     }
 
     if(lives > 0){
