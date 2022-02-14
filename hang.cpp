@@ -27,11 +27,11 @@ char intToAlphabet( int i )
 }
 
 int main() {
-    //Start of random word generator (from the 1000 words in dictionary.txt)
+    //Start of random word generator (from the 55000 words in dictionary.txt)
     int n=getrand(1,1000);
     int ran;
     for (int i=1; i<=n; i++) {
-        ran = getrand(1,55000); //random value from 1 to 1000
+        ran = getrand(1,55000); //random value from 1 to 55000
     }
 
     ifstream dictionary; 
