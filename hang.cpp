@@ -31,7 +31,7 @@ int main() {
     int n=getrand(1,1000);
     int ran;
     for (int i=1; i<=n; i++) {
-        ran = getrand(1,1000); //random value from 1 to 1000
+        ran = getrand(1,55000); //random value from 1 to 1000
     }
 
     ifstream dictionary; 
@@ -59,7 +59,7 @@ int main() {
         response[i] = "_ ";
     }
 
-    cout << "Welcome to hangman! \n" << "Enter 1 to see used letters \n" << "Enter any other number to give up \n\n";
+    cout << "Welcome to Hangman! \n" << "Enter 1 to see used letters \n" << "Enter any other number to give up \n\n";
     //user interaction loop
     while(rights < length && lives > 0){
 
