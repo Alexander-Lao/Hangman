@@ -31,7 +31,7 @@ int main() {
     int n=getrand(1,1000);
     int ran;
     for (int i=1; i<=n; i++) {
-        ran = getrand(1,55000); //random value from 1 to 55000
+        ran = getrand(1,753); //random value from 1 to 753
     }
 
     ifstream dictionary; 
